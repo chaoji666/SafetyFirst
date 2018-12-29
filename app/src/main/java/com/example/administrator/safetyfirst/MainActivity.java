@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-1229
+
     private NoScrollViewPager viewPager;
     private List<Fragment> mviews;
     ImageView map_img;  //底部标签图标
