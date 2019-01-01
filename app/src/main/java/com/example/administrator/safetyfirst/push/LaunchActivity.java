@@ -7,6 +7,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Property;
 import android.view.View;
 
@@ -66,17 +67,22 @@ public class LaunchActivity extends Activity {
      * 等待个推框架对我们的PushId设置好值
      */
     private void waitPushReceiverId() {
+        Log.i("msg","waitPushReceiverId");
         if (Account.isLogin()) {
+            Log.i("msg","waitPushReceiverId->login");
             // 已经登录情况下，判断是否绑定
             // 如果没有绑定则等待广播接收器进行绑定
             if (Account.isBind()) {
+                Log.i("msg","waitPushReceiverId->login->bind");
                 skip();
                 return;
             }
         } else {
+            Log.i("msg","waitPushReceiverId->unlogin");
             // 没有登录
             // 如果拿到了PushId, 没有登录是不能绑定PushId的
             if (!TextUtils.isEmpty(Account.getPushId())) {
+                Log.i("msg","waitPushReceiverId->unlogin->getpushId");
                 // 跳转
                 skip();
                 return;
@@ -98,6 +104,7 @@ public class LaunchActivity extends Activity {
      * 在跳转之前需要把剩下的50%进行完成
      */
     private void skip() {
+        Log.i("msg","skip");
         startAnim(1f, new Runnable() {
             @Override
             public void run() {
@@ -110,6 +117,7 @@ public class LaunchActivity extends Activity {
      * 真实的跳转
      */
     private void reallySkip() {
+        Log.i("msg","reallySkip");
         // 权限检测，跳转
         if (PermissionsFragment.haveAll(this, getSupportFragmentManager())) {
             // 检查跳转到主页还是登录
