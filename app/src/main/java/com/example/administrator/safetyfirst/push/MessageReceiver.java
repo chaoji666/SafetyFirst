@@ -21,12 +21,14 @@ public class MessageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.i("msg ","MessageReceiver->onReceive->intent"+intent);
         if (intent == null)
             return;
 
         Bundle bundle = intent.getExtras();
 
         // 判断当前消息的意图
+        Log.i("msg","(PushConsts.CMD_ACTION==="+bundle.getInt(PushConsts.CMD_ACTION));
         switch (bundle.getInt(PushConsts.CMD_ACTION)) {
             case PushConsts.GET_CLIENTID: {
                 Log.i(TAG, "GET_CLIENTID:" + bundle.toString());

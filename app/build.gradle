@@ -16,6 +16,9 @@ android {
                 GETUI_APP_SECRET: "BbW4cbNHT46IcH9BsQugj1",
                 PACKAGE_NAME    : applicationId
         ]
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "x86_64","x86"
+        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -58,5 +61,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
-    implementation project(':common')
 }

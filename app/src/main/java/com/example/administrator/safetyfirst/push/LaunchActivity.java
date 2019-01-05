@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -79,6 +80,7 @@ public class LaunchActivity extends Activity {
             }
         } else {
             Log.i("msg","waitPushReceiverId->unlogin");
+            Log.i("msg","pushId"+Account.getPushId());
             // 没有登录
             // 如果拿到了PushId, 没有登录是不能绑定PushId的
             if (!TextUtils.isEmpty(Account.getPushId())) {
