@@ -19,3 +19,17 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-dontwarn com.yalantis.ucrop**
+-keep class com.yalantis.ucrop** { *; }
+-keep interface com.yalantis.ucrop** { *; }
+
+-keep class com.alibaba.sdk.android.oss.** { *; }
+-dontwarn okio.**
+-dontwarn org.apache.commons.codec.binary.**
+
+## DbFlow数据库 不需要混淆
+#-dontwarn com.raizlabs.android.dbflow.**
+#-keep class com.raizlabs.android.dbflow.** { *; }
+##  address_selector不需要混淆
+#-dontwarn chihane.jdaddressselector.**
+#-keep class chihane.jdaddressselector.** { *; }

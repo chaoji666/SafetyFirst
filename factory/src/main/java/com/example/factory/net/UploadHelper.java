@@ -16,20 +16,20 @@ import java.io.File;
 import java.util.Date;
 
 /**
- * 上传工具类，用于上传任意文件到腾讯OSS存储
+ * 上传工具类，用于上传任意文件到阿里OSS存储
  */
 public class UploadHelper {
     private static final String TAG = UploadHelper.class.getSimpleName();
     // 与你们的存储区域有关系
-    private static final String ENDPOINT = "http://cos.ap-guangzhou.myqcloud.com";
+    private static final String ENDPOINT = "http://oss-cn-beijing.aliyuncs.com";
     // 上传的仓库名
-    private static final String BUCKET_NAME = "safetyfirst-1258299773";
+    private static final String BUCKET_NAME = "safetyfirst";
 
 
     private static OSS getClient() {
         // 明文设置secret的方式建议只在测试时使用，更多鉴权模式请参考后面的`访问控制`章节
         OSSCredentialProvider credentialProvider = new OSSPlainTextAKSKCredentialProvider(
-                "AKIDeyL1QF8tp3PqPAyrzNFAHYLQwmjnlK68", "cRR3HezaHz6NggF49S1gRMWufTbRhuRF");
+                "LTAIrOzKoC7M0V1n", "FjPVFQ5ZXV3U0piao59TkXwSyOBcpO");
         return new OSSClient(Factory.app(), ENDPOINT, credentialProvider);
     }
 
