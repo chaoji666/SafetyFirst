@@ -7,6 +7,8 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Property;
@@ -17,6 +19,7 @@ import com.example.administrator.safetyfirst.push.activities.MainActivity;
 import com.example.administrator.safetyfirst.push.frags.assist.PermissionsFragment;
 import com.example.common.app.Activity;
 import com.example.factory.persistence.Account;
+import com.igexin.sdk.PushManager;
 
 import net.qiujuer.genius.res.Resource;
 import net.qiujuer.genius.ui.compat.UiCompat;
@@ -29,6 +32,17 @@ public class LaunchActivity extends Activity {
     // Drawable
     private ColorDrawable mBgDrawable;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // com.example.administrator.safetyfirst.push.PushService 为第三方自定义推送服务
+        // 初始化个推
+        PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
+        // IntentService 为第三方自定义的推送服务事件接收类
+        // 在个推SDK初始化后，注册上述 IntentService 类
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.example.administrator.safetyfirst.push.IntentService.class);
+
+    }
 
     @Override
     protected int getContentLayoutId() {

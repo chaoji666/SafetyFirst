@@ -34,6 +34,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
+        <service
+            android:name="com.example.administrator.safetyfirst.push.PushService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":pushservice">
+        </service>
+        <service android:name="com.example.administrator.safetyfirst.push.IntentService"/>
         <!--个推的广播注册-->
         <receiver
             android:name=".MessageReceiver"
