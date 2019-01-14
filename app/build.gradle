@@ -11,9 +11,9 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //个推相关参数
         manifestPlaceholders = [
-                GETUI_APP_ID    : "RECyjUoRJE8UFsKONWt557",
-                GETUI_APP_KEY   : "lVQN8mgllW9jnY9AZul3jA",
-                GETUI_APP_SECRET: "BbW4cbNHT46IcH9BsQugj1",
+                GETUI_APP_ID    : "7cTpF6igWz5XVb1Fb3uP68",
+                GETUI_APP_KEY   : "f2ZDeaI30M9FaaTfUPLpr3",
+                GETUI_APP_SECRET: "DkptNj8olH9VZQ0fCekS55",
                 PACKAGE_NAME    : applicationId
         ]
         ndk {

@@ -7,9 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
-    <!--个推权限-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <!-- 读取存储权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
@@ -18,6 +15,17 @@
 
     <!-- 录音权限 -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- iBeancon功能所需权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- 个推3.0电子围栏功能所需权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="getui.permission.GetuiService.${applicationId}" />
+    <permission
+        android:name="getui.permission.GetuiService.${applicationId}"
+        android:protectionLevel="normal" >
+    </permission>
 
     <application
         android:allowBackup="true"
@@ -34,23 +42,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>-->
+        <service android:name=".GeTuiIntentService"/>
         <service
-            android:name="com.example.administrator.safetyfirst.push.PushService"
+            android:name=".GeTuiPushService"
             android:exported="true"
             android:label="PushService"
             android:process=":pushservice">
         </service>
-        <service android:name="com.example.administrator.safetyfirst.push.IntentService"/>
+
         <!--个推的广播注册-->
-        <receiver
-            android:name=".MessageReceiver"
-            android:enabled="true"
-            android:exported="true"
-            android:permission="1000">
-            <intent-filter>
-                <action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />
-            </intent-filter>
-        </receiver>
+        <!--<receiver-->
+            <!--android:name=".MessageReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="true"-->
+            <!--android:permission="1000">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="com.igexin.sdk.action.${GETUI_APP_ID}" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
 
         <activity
             android:name=".LaunchActivity"

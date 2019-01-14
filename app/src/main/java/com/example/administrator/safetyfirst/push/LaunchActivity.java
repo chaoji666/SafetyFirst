@@ -5,7 +5,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.ArgbEvaluator;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -35,13 +34,15 @@ public class LaunchActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // com.example.administrator.safetyfirst.push.PushService 为第三方自定义推送服务
-        // 初始化个推
-        PushManager.getInstance().initialize(this.getApplicationContext(), PushService.class);
-        // IntentService 为第三方自定义的推送服务事件接收类
-        // 在个推SDK初始化后，注册上述 IntentService 类
-        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), com.example.administrator.safetyfirst.push.IntentService.class);
 
+        // 初始化个推
+        Log.i("msg ","LaunchActivity->oncreate");
+        PushManager.getInstance().initialize(this.getApplicationContext(), GeTuiPushService.class);
+        // GeTuiIntentService 为第三方自定义的推送服务事件接收类
+        // 在个推SDK初始化后，注册上述 GeTuiIntentService 类
+        PushManager.getInstance().registerPushIntentService(this.getApplicationContext(), GeTuiIntentService.class);
+//        String cid = PushManager.getInstance().getClientid(this);
+//        Log.i("msg","clientid==="+cid);
     }
 
     @Override

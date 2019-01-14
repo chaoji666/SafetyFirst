@@ -10,6 +10,7 @@ import com.example.factory.Factory;
 import com.example.factory.data.helper.AccountHelper;
 import com.example.factory.persistence.Account;
 import com.igexin.sdk.PushConsts;
+import com.igexin.sdk.PushManager;
 
 /**
  * 个推的消息接收器
@@ -21,12 +22,14 @@ public class MessageReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.i("msg ","MessageReceiver->onReceive->intent"+intent);
+
         if (intent == null)
             return;
-
+//        PushManager.getInstance().initialize(context, GeTuiPushService.class);
         Bundle bundle = intent.getExtras();
-
+//        String clientid = PushManager.getInstance().getClientid(context);
+//        bundle.putString("clientid",clientid);
+//        Log.e("msg ",clientid);
         // 判断当前消息的意图
         Log.i("msg","(PushConsts.CMD_ACTION==="+bundle.getInt(PushConsts.CMD_ACTION));
         switch (bundle.getInt(PushConsts.CMD_ACTION)) {
